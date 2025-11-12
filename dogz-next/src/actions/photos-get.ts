@@ -1,0 +1,20 @@
+"use server";
+
+export type Photo = {
+  id: number;
+  title: string;
+  author: string;
+  date: string;
+  src: string;
+  peso: string;
+  idade: string;
+  acessos: string;
+  total_comments: string;
+};
+export default async function PhotosGet() {
+  const response = await fetch(
+    "https://dogsapi.origamid.dev/json/api/photo/?_total=6&_page=1&_user=0"
+  );
+  const data = (await response.json()) as Photo[];
+  return data;
+}
